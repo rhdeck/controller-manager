@@ -56,5 +56,16 @@
     "@raydeck/registry-manager": "^1.1.0",
     "@raydeck/session-manager": "^1.4.0",
     "aws-sdk": "^2.745.0"
+  },
+  "liveLink": {
+    "ignoreMasks": [
+      "package.tgz",
+      "lib/**",
+      "doctemp/**",
+      "docstemp/**",
+      "src/index.ts",
+      "README.md",
+      "src/make-index.ts"
+    ]
   }
 }
