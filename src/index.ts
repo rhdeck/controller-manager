@@ -12,6 +12,7 @@ import Lookup, {
 } from "./Lookup";
 import Lookupable from "./Lookupable";
 import Relationship, {
+  get as Relationship_get,
   getValuesPage as Relationship_getValuesPage,
   getValuesObjects as Relationship_getValuesObjects,
   getIdsPage as Relationship_getIdsPage,
@@ -34,6 +35,7 @@ export {
   Lookup_removeUri,
   Lookupable,
   Relationship,
+  Relationship_get,
   Relationship_getValuesPage,
   Relationship_getValuesObjects,
   Relationship_getIdsPage,

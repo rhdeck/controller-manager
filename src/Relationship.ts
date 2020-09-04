@@ -9,6 +9,7 @@ export default class Relationship extends DDBBase {
     this.init({
       id,
       tableName: registryGet("lookupTable"),
+      partitionKey: "id",
     });
   }
   toId(id: string | { id: string; value: string }) {
@@ -22,6 +23,9 @@ export default class Relationship extends DDBBase {
     const { id, value } = this.getIdObject();
     return makeCompoundId(id, value);
   }
+}
+export async function get(id: string, value: string) {
+  return new Relationship(makeCompoundId(id, value)).load();
 }
 export async function getValuesPage(
   id: string,
