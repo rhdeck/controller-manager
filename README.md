@@ -6,9 +6,9 @@
 
 <a name="_librarymd"></a>
 
-[@raydeck/controller-manager - v1.0.3](#readmemd)
+[@raydeck/controller-manager - v1.0.4](#readmemd)
 
-# @raydeck/controller-manager - v1.0.3
+# @raydeck/controller-manager - v1.0.4
 
 ## Index
 
@@ -47,7 +47,7 @@
 
 ▸ **_clear**(`id`: string, `prefix`: string, `lastCursor?`: undefined | string): *Promise‹void›*
 
-*Defined in [Relationship.ts:119](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L119)*
+*Defined in [Relationship.ts:127](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L127)*
 
 **Parameters:**
 
@@ -65,7 +65,7 @@ ___
 
 ▸ **_clearValue**(`value`: string, `prefix`: string, `lastCursor?`: undefined | string): *Promise‹void›*
 
-*Defined in [Relationship.ts:137](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L137)*
+*Defined in [Relationship.ts:145](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L145)*
 
 **Parameters:**
 
@@ -83,14 +83,14 @@ ___
 
 ▸ **clear**(`id`: string, `prefix`: string): *Promise‹void›*
 
-*Defined in [Relationship.ts:116](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L116)*
+*Defined in [Relationship.ts:124](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L124)*
 
 **Parameters:**
 
-Name | Type | Default |
------- | ------ | ------ |
-`id` | string | - |
-`prefix` | string | "" |
+Name | Type |
+------ | ------ |
+`id` | string |
+`prefix` | string |
 
 **Returns:** *Promise‹void›*
 
@@ -100,14 +100,14 @@ ___
 
 ▸ **clearValue**(`value`: string, `prefix`: string): *Promise‹void›*
 
-*Defined in [Relationship.ts:134](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L134)*
+*Defined in [Relationship.ts:142](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L142)*
 
 **Parameters:**
 
-Name | Type | Default |
------- | ------ | ------ |
-`value` | string | - |
-`prefix` | string | "" |
+Name | Type |
+------ | ------ |
+`value` | string |
+`prefix` | string |
 
 **Returns:** *Promise‹void›*
 
@@ -115,9 +115,9 @@ ___
 
 ###  get
 
-▸ **get**(`id`: string, `value`: string): *Promise‹[Relationship](#classesrelationshipmd)‹››*
+▸ **get**(`id`: string, `value`: string, `prefix`: string): *Promise‹[Relationship](#classesrelationshipmd)‹››*
 
-*Defined in [Relationship.ts:28](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L28)*
+*Defined in [Relationship.ts:28](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L28)*
 
 **Parameters:**
 
@@ -125,6 +125,7 @@ Name | Type |
 ------ | ------ |
 `id` | string |
 `value` | string |
+`prefix` | string |
 
 **Returns:** *Promise‹[Relationship](#classesrelationshipmd)‹››*
 
@@ -134,7 +135,7 @@ ___
 
 ▸ **getIdsObjects**‹**T**›(`schemeOrClass`: Schemable | string, `value`: string, `prefix`: string, `lastKey?`: undefined | string): *Promise‹[T[], string | undefined]›*
 
-*Defined in [Relationship.ts:81](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L81)*
+*Defined in [Relationship.ts:90](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L90)*
 
 **Type parameters:**
 
@@ -142,12 +143,12 @@ ___
 
 **Parameters:**
 
-Name | Type | Default |
------- | ------ | ------ |
-`schemeOrClass` | Schemable &#124; string | - |
-`value` | string | - |
-`prefix` | string | "" |
-`lastKey?` | undefined &#124; string | - |
+Name | Type |
+------ | ------ |
+`schemeOrClass` | Schemable &#124; string |
+`value` | string |
+`prefix` | string |
+`lastKey?` | undefined &#124; string |
 
 **Returns:** *Promise‹[T[], string | undefined]›*
 
@@ -155,15 +156,16 @@ ___
 
 ###  getIdsPage
 
-▸ **getIdsPage**(`id`: string, `lastKey?`: undefined | string): *Promise‹[string[], string | undefined]›*
+▸ **getIdsPage**(`value`: string, `prefix`: string, `lastKey?`: undefined | string): *Promise‹[string[], string | undefined]›*
 
-*Defined in [Relationship.ts:63](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L63)*
+*Defined in [Relationship.ts:69](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L69)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
-`id` | string |
+`value` | string |
+`prefix` | string |
 `lastKey?` | undefined &#124; string |
 
 **Returns:** *Promise‹[string[], string | undefined]›*
@@ -174,7 +176,7 @@ ___
 
 ▸ **getObject**‹**T**›(`id`: string): *Promise‹T›*
 
-*Defined in [Lookup.ts:17](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookup.ts#L17)*
+*Defined in [Lookup.ts:17](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookup.ts#L17)*
 
 **Type parameters:**
 
@@ -194,7 +196,7 @@ ___
 
 ▸ **getUri**(`id`: string): *Promise‹string›*
 
-*Defined in [Lookup.ts:13](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookup.ts#L13)*
+*Defined in [Lookup.ts:13](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookup.ts#L13)*
 
 **Parameters:**
 
@@ -208,9 +210,9 @@ ___
 
 ###  getValuesObjects
 
-▸ **getValuesObjects**‹**T**›(`schemeOrClass`: Schemable | string, `id`: string, `lastKey?`: undefined | string): *Promise‹[T[], string | undefined]›*
+▸ **getValuesObjects**‹**T**›(`schemeOrClass`: Schemable | string, `id`: string, `prefix`: string, `lastKey?`: undefined | string): *Promise‹[T[], string | undefined]›*
 
-*Defined in [Relationship.ts:44](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L44)*
+*Defined in [Relationship.ts:49](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L49)*
 
 **Type parameters:**
 
@@ -222,6 +224,7 @@ Name | Type |
 ------ | ------ |
 `schemeOrClass` | Schemable &#124; string |
 `id` | string |
+`prefix` | string |
 `lastKey?` | undefined &#124; string |
 
 **Returns:** *Promise‹[T[], string | undefined]›*
@@ -230,15 +233,16 @@ ___
 
 ###  getValuesPage
 
-▸ **getValuesPage**(`id`: string, `lastKey?`: undefined | string): *Promise‹[string[], string | undefined]›*
+▸ **getValuesPage**(`id`: string, `prefix`: string, `lastKey?`: undefined | string): *Promise‹[string[], string | undefined]›*
 
-*Defined in [Relationship.ts:31](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L31)*
+*Defined in [Relationship.ts:31](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L31)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
 `id` | string |
+`prefix` | string |
 `lastKey?` | undefined &#124; string |
 
 **Returns:** *Promise‹[string[], string | undefined]›*
@@ -249,7 +253,7 @@ ___
 
 ▸ **make**(`id`: string, `uri`: string): *Promise‹void›*
 
-*Defined in [Lookup.ts:47](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookup.ts#L47)*
+*Defined in [Lookup.ts:47](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookup.ts#L47)*
 
 **Parameters:**
 
@@ -266,7 +270,7 @@ ___
 
 ▸ **remove**(`id`: string): *Promise‹void›*
 
-*Defined in [Lookup.ts:39](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookup.ts#L39)*
+*Defined in [Lookup.ts:39](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookup.ts#L39)*
 
 **Parameters:**
 
@@ -282,7 +286,7 @@ ___
 
 ▸ **removeObject**(`object`: Sessionable): *Promise‹void›*
 
-*Defined in [Lookup.ts:52](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookup.ts#L52)*
+*Defined in [Lookup.ts:52](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookup.ts#L52)*
 
 **Parameters:**
 
@@ -298,7 +302,7 @@ ___
 
 ▸ **removeUri**(`uri`: string): *Promise‹void›*
 
-*Defined in [Lookup.ts:56](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookup.ts#L56)*
+*Defined in [Lookup.ts:56](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookup.ts#L56)*
 
 **Parameters:**
 
@@ -314,15 +318,15 @@ ___
 
 ▸ **set**(`id`: string, `value`: string, `prefix`: string): *Promise‹void›*
 
-*Defined in [Relationship.ts:102](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L102)*
+*Defined in [Relationship.ts:110](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L110)*
 
 **Parameters:**
 
-Name | Type | Default |
------- | ------ | ------ |
-`id` | string | - |
-`value` | string | - |
-`prefix` | string | "" |
+Name | Type |
+------ | ------ |
+`id` | string |
+`value` | string |
+`prefix` | string |
 
 **Returns:** *Promise‹void›*
 
@@ -332,7 +336,7 @@ ___
 
 ▸ **setObject**(`id`: string, `object`: Sessionable): *Promise‹void›*
 
-*Defined in [Lookup.ts:22](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookup.ts#L22)*
+*Defined in [Lookup.ts:22](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookup.ts#L22)*
 
 **Parameters:**
 
@@ -349,7 +353,7 @@ ___
 
 ▸ **setUri**(`id`: string, `uri`: string): *Promise‹void›*
 
-*Defined in [Lookup.ts:26](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookup.ts#L26)*
+*Defined in [Lookup.ts:26](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookup.ts#L26)*
 
 **Parameters:**
 
@@ -363,7 +367,7 @@ Name | Type |
 
 <a name="classesbasemd"></a>
 
-[@raydeck/controller-manager - v1.0.3](#readmemd) › [Base](#classesbasemd)
+[@raydeck/controller-manager - v1.0.4](#readmemd) › [Base](#classesbasemd)
 
 # Class: Base
 
@@ -408,7 +412,7 @@ Name | Type |
 
 • **id**? : *undefined | object*
 
-*Defined in [Base.ts:6](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L6)*
+*Defined in [Base.ts:6](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L6)*
 
 ___
 
@@ -416,7 +420,7 @@ ___
 
 • **scheme**: *string* = ""
 
-*Defined in [Base.ts:50](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L50)*
+*Defined in [Base.ts:50](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L50)*
 
 ___
 
@@ -424,7 +428,7 @@ ___
 
 ▪ **scheme**: *string* = ""
 
-*Defined in [Base.ts:51](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L51)*
+*Defined in [Base.ts:51](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L51)*
 
 ## Methods
 
@@ -432,7 +436,7 @@ ___
 
 ▸ **delete**(): *Promise‹void›*
 
-*Defined in [Base.ts:13](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L13)*
+*Defined in [Base.ts:13](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L13)*
 
 **Returns:** *Promise‹void›*
 
@@ -442,7 +446,7 @@ ___
 
 ▸ **exists**(`key`: string): *Promise‹boolean›*
 
-*Defined in [Base.ts:17](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L17)*
+*Defined in [Base.ts:17](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L17)*
 
 **Parameters:**
 
@@ -458,7 +462,7 @@ ___
 
 ▸ **get**‹**T**›(`key`: string, `def?`: T): *Promise‹T›*
 
-*Defined in [Base.ts:10](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L10)*
+*Defined in [Base.ts:10](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L10)*
 
 **Type parameters:**
 
@@ -479,7 +483,7 @@ ___
 
 ▸ **getAll**(): *Promise‹object›*
 
-*Defined in [Base.ts:11](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L11)*
+*Defined in [Base.ts:11](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L11)*
 
 **Returns:** *Promise‹object›*
 
@@ -489,7 +493,7 @@ ___
 
 ▸ **getId**(): *string*
 
-*Defined in [Base.ts:29](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L29)*
+*Defined in [Base.ts:29](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L29)*
 
 **Returns:** *string*
 
@@ -499,7 +503,7 @@ ___
 
 ▸ **getIdObject**(): *object*
 
-*Defined in [Base.ts:32](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L32)*
+*Defined in [Base.ts:32](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L32)*
 
 **Returns:** *object*
 
@@ -511,7 +515,7 @@ ___
 
 ▸ **getOptional**‹**T**›(`key`: string, `def?`: T): *Promise‹T | undefined›*
 
-*Defined in [Base.ts:14](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L14)*
+*Defined in [Base.ts:14](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L14)*
 
 **Type parameters:**
 
@@ -532,7 +536,7 @@ ___
 
 ▸ **getUri**(): *string*
 
-*Defined in [Base.ts:39](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L39)*
+*Defined in [Base.ts:39](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L39)*
 
 **Returns:** *string*
 
@@ -542,7 +546,7 @@ ___
 
 ▸ **init**(`__namedParameters`: object): *void*
 
-*Defined in [Base.ts:7](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L7)*
+*Defined in [Base.ts:7](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L7)*
 
 **Parameters:**
 
@@ -560,7 +564,7 @@ ___
 
 ▸ **mock**(): *object*
 
-*Defined in [Base.ts:36](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L36)*
+*Defined in [Base.ts:36](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L36)*
 
 **Returns:** *object*
 
@@ -572,7 +576,7 @@ ___
 
 ▸ **runLater**(`eventName`: string, `when`: Date, `context?`: undefined | object): *Promise‹void›*
 
-*Defined in [Base.ts:52](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L52)*
+*Defined in [Base.ts:52](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L52)*
 
 **Parameters:**
 
@@ -590,7 +594,7 @@ ___
 
 ▸ **set**(`key`: string, `value`: any): *Promise‹void›*
 
-*Defined in [Base.ts:12](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L12)*
+*Defined in [Base.ts:12](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L12)*
 
 **Parameters:**
 
@@ -607,7 +611,7 @@ ___
 
 ▸ **toId**(`id`: string | object): *object*
 
-*Defined in [Base.ts:25](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L25)*
+*Defined in [Base.ts:25](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L25)*
 
 **Parameters:**
 
@@ -625,7 +629,7 @@ ___
 
 ▸ **trigger**(`eventName`: string, `data`: object): *Promise‹void›*
 
-*Defined in [Base.ts:44](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L44)*
+*Defined in [Base.ts:44](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L44)*
 
 **Parameters:**
 
@@ -639,7 +643,7 @@ Name | Type | Default |
 
 <a name="classesddbbasemd"></a>
 
-[@raydeck/controller-manager - v1.0.3](#readmemd) › [DDBBase](#classesddbbasemd)
+[@raydeck/controller-manager - v1.0.4](#readmemd) › [DDBBase](#classesddbbasemd)
 
 # Class: DDBBase
 
@@ -695,7 +699,7 @@ Name | Type | Default |
 
 • **ddb**: *DDBHandler*
 
-*Defined in [DDBBase.ts:4](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L4)*
+*Defined in [DDBBase.ts:4](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L4)*
 
 ___
 
@@ -705,7 +709,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[id](#optional-id)*
 
-*Defined in [Base.ts:6](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L6)*
+*Defined in [Base.ts:6](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L6)*
 
 ___
 
@@ -715,7 +719,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[scheme](#scheme)*
 
-*Defined in [Base.ts:50](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L50)*
+*Defined in [Base.ts:50](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L50)*
 
 ___
 
@@ -723,7 +727,7 @@ ___
 
 ▪ **DDBHandler**: *DDBHandler* = DDBHandler
 
-*Defined in [DDBBase.ts:64](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L64)*
+*Defined in [DDBBase.ts:64](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L64)*
 
 ___
 
@@ -733,7 +737,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[scheme](#scheme)*
 
-*Defined in [Base.ts:51](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L51)*
+*Defined in [Base.ts:51](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L51)*
 
 ## Methods
 
@@ -743,7 +747,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[delete](#abstract-delete)*
 
-*Defined in [DDBBase.ts:61](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L61)*
+*Defined in [DDBBase.ts:61](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L61)*
 
 **Returns:** *Promise‹void›*
 
@@ -755,7 +759,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[exists](#exists)*
 
-*Defined in [Base.ts:17](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L17)*
+*Defined in [Base.ts:17](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L17)*
 
 **Parameters:**
 
@@ -773,7 +777,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[get](#abstract-get)*
 
-*Defined in [DDBBase.ts:30](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L30)*
+*Defined in [DDBBase.ts:30](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L30)*
 
 **Type parameters:**
 
@@ -796,7 +800,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[getAll](#abstract-getall)*
 
-*Defined in [DDBBase.ts:45](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L45)*
+*Defined in [DDBBase.ts:45](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L45)*
 
 **Returns:** *Promise‹object›*
 
@@ -808,7 +812,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getId](#getid)*
 
-*Defined in [Base.ts:29](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L29)*
+*Defined in [Base.ts:29](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L29)*
 
 **Returns:** *string*
 
@@ -820,7 +824,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getIdObject](#getidobject)*
 
-*Defined in [Base.ts:32](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L32)*
+*Defined in [Base.ts:32](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L32)*
 
 **Returns:** *object*
 
@@ -834,7 +838,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getOptional](#getoptional)*
 
-*Defined in [Base.ts:14](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L14)*
+*Defined in [Base.ts:14](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L14)*
 
 **Type parameters:**
 
@@ -857,7 +861,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getUri](#geturi)*
 
-*Defined in [Base.ts:39](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L39)*
+*Defined in [Base.ts:39](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L39)*
 
 **Returns:** *string*
 
@@ -869,7 +873,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[init](#init)*
 
-*Defined in [DDBBase.ts:5](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L5)*
+*Defined in [DDBBase.ts:5](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L5)*
 
 **Parameters:**
 
@@ -889,7 +893,7 @@ ___
 
 ▸ **load**(): *Promise‹this›*
 
-*Defined in [DDBBase.ts:17](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L17)*
+*Defined in [DDBBase.ts:17](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L17)*
 
 **Returns:** *Promise‹this›*
 
@@ -899,7 +903,7 @@ ___
 
 ▸ **loadFromItem**(`Item`: object): *Promise‹this›*
 
-*Defined in [DDBBase.ts:24](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L24)*
+*Defined in [DDBBase.ts:24](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L24)*
 
 **Parameters:**
 
@@ -917,7 +921,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[mock](#mock)*
 
-*Defined in [Base.ts:36](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L36)*
+*Defined in [Base.ts:36](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L36)*
 
 **Returns:** *object*
 
@@ -929,7 +933,7 @@ ___
 
 ▸ **remove**(`key`: string): *Promise‹void›*
 
-*Defined in [DDBBase.ts:58](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L58)*
+*Defined in [DDBBase.ts:58](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L58)*
 
 **Parameters:**
 
@@ -947,7 +951,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[runLater](#runlater)*
 
-*Defined in [Base.ts:52](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L52)*
+*Defined in [Base.ts:52](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L52)*
 
 **Parameters:**
 
@@ -967,7 +971,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[set](#abstract-set)*
 
-*Defined in [DDBBase.ts:48](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L48)*
+*Defined in [DDBBase.ts:48](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L48)*
 
 **Parameters:**
 
@@ -986,7 +990,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[toId](#toid)*
 
-*Defined in [Base.ts:25](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L25)*
+*Defined in [Base.ts:25](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L25)*
 
 **Parameters:**
 
@@ -1006,7 +1010,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[trigger](#trigger)*
 
-*Defined in [Base.ts:44](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L44)*
+*Defined in [Base.ts:44](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L44)*
 
 **Parameters:**
 
@@ -1020,7 +1024,7 @@ Name | Type | Default |
 
 <a name="classeslookupmd"></a>
 
-[@raydeck/controller-manager - v1.0.3](#readmemd) › [Lookup](#classeslookupmd)
+[@raydeck/controller-manager - v1.0.4](#readmemd) › [Lookup](#classeslookupmd)
 
 # Class: Lookup
 
@@ -1074,7 +1078,7 @@ Name | Type | Default |
 
 \+ **new Lookup**(`id?`: undefined | string): *[Lookup](#classeslookupmd)*
 
-*Defined in [Lookup.ts:4](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookup.ts#L4)*
+*Defined in [Lookup.ts:4](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookup.ts#L4)*
 
 **Parameters:**
 
@@ -1092,7 +1096,7 @@ Name | Type |
 
 *Inherited from [DDBBase](#classesddbbasemd).[ddb](#ddb)*
 
-*Defined in [DDBBase.ts:4](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L4)*
+*Defined in [DDBBase.ts:4](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L4)*
 
 ___
 
@@ -1102,7 +1106,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[id](#optional-id)*
 
-*Defined in [Base.ts:6](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L6)*
+*Defined in [Base.ts:6](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L6)*
 
 ___
 
@@ -1112,7 +1116,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[scheme](#scheme)*
 
-*Defined in [Base.ts:50](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L50)*
+*Defined in [Base.ts:50](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L50)*
 
 ___
 
@@ -1122,7 +1126,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[DDBHandler](#static-ddbhandler)*
 
-*Defined in [DDBBase.ts:64](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L64)*
+*Defined in [DDBBase.ts:64](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L64)*
 
 ___
 
@@ -1132,7 +1136,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[scheme](#scheme)*
 
-*Defined in [Base.ts:51](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L51)*
+*Defined in [Base.ts:51](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L51)*
 
 ## Methods
 
@@ -1144,7 +1148,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[delete](#abstract-delete)*
 
-*Defined in [DDBBase.ts:61](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L61)*
+*Defined in [DDBBase.ts:61](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L61)*
 
 **Returns:** *Promise‹void›*
 
@@ -1156,7 +1160,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[exists](#exists)*
 
-*Defined in [Base.ts:17](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L17)*
+*Defined in [Base.ts:17](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L17)*
 
 **Parameters:**
 
@@ -1176,7 +1180,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[get](#abstract-get)*
 
-*Defined in [DDBBase.ts:30](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L30)*
+*Defined in [DDBBase.ts:30](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L30)*
 
 **Type parameters:**
 
@@ -1201,7 +1205,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[getAll](#abstract-getall)*
 
-*Defined in [DDBBase.ts:45](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L45)*
+*Defined in [DDBBase.ts:45](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L45)*
 
 **Returns:** *Promise‹object›*
 
@@ -1213,7 +1217,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getId](#getid)*
 
-*Defined in [Base.ts:29](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L29)*
+*Defined in [Base.ts:29](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L29)*
 
 **Returns:** *string*
 
@@ -1225,7 +1229,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getIdObject](#getidobject)*
 
-*Defined in [Base.ts:32](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L32)*
+*Defined in [Base.ts:32](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L32)*
 
 **Returns:** *object*
 
@@ -1239,7 +1243,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getOptional](#getoptional)*
 
-*Defined in [Base.ts:14](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L14)*
+*Defined in [Base.ts:14](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L14)*
 
 **Type parameters:**
 
@@ -1262,7 +1266,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getUri](#geturi)*
 
-*Defined in [Base.ts:39](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L39)*
+*Defined in [Base.ts:39](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L39)*
 
 **Returns:** *string*
 
@@ -1276,7 +1280,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[init](#init)*
 
-*Defined in [DDBBase.ts:5](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L5)*
+*Defined in [DDBBase.ts:5](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L5)*
 
 **Parameters:**
 
@@ -1298,7 +1302,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[load](#load)*
 
-*Defined in [DDBBase.ts:17](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L17)*
+*Defined in [DDBBase.ts:17](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L17)*
 
 **Returns:** *Promise‹this›*
 
@@ -1310,7 +1314,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[loadFromItem](#loadfromitem)*
 
-*Defined in [DDBBase.ts:24](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L24)*
+*Defined in [DDBBase.ts:24](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L24)*
 
 **Parameters:**
 
@@ -1328,7 +1332,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[mock](#mock)*
 
-*Defined in [Base.ts:36](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L36)*
+*Defined in [Base.ts:36](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L36)*
 
 **Returns:** *object*
 
@@ -1342,7 +1346,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[remove](#remove)*
 
-*Defined in [DDBBase.ts:58](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L58)*
+*Defined in [DDBBase.ts:58](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L58)*
 
 **Parameters:**
 
@@ -1360,7 +1364,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[runLater](#runlater)*
 
-*Defined in [Base.ts:52](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L52)*
+*Defined in [Base.ts:52](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L52)*
 
 **Parameters:**
 
@@ -1382,7 +1386,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[set](#abstract-set)*
 
-*Defined in [DDBBase.ts:48](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L48)*
+*Defined in [DDBBase.ts:48](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L48)*
 
 **Parameters:**
 
@@ -1401,7 +1405,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[toId](#toid)*
 
-*Defined in [Base.ts:25](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L25)*
+*Defined in [Base.ts:25](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L25)*
 
 **Parameters:**
 
@@ -1421,7 +1425,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[trigger](#trigger)*
 
-*Defined in [Base.ts:44](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L44)*
+*Defined in [Base.ts:44](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L44)*
 
 **Parameters:**
 
@@ -1435,7 +1439,7 @@ Name | Type | Default |
 
 <a name="classeslookupablemd"></a>
 
-[@raydeck/controller-manager - v1.0.3](#readmemd) › [Lookupable](#classeslookupablemd)
+[@raydeck/controller-manager - v1.0.4](#readmemd) › [Lookupable](#classeslookupablemd)
 
 # Class: Lookupable
 
@@ -1477,6 +1481,7 @@ Name | Type | Default |
 * [mock](#mock)
 * [remove](#remove)
 * [removeRelationship](#removerelationship)
+* [removeValueRelationship](#removevaluerelationship)
 * [runLater](#runlater)
 * [set](#set)
 * [setLookup](#setlookup)
@@ -1491,7 +1496,7 @@ Name | Type | Default |
 
 *Inherited from [DDBBase](#classesddbbasemd).[ddb](#ddb)*
 
-*Defined in [DDBBase.ts:4](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L4)*
+*Defined in [DDBBase.ts:4](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L4)*
 
 ___
 
@@ -1501,7 +1506,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[id](#optional-id)*
 
-*Defined in [Base.ts:6](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L6)*
+*Defined in [Base.ts:6](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L6)*
 
 ___
 
@@ -1511,7 +1516,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[scheme](#scheme)*
 
-*Defined in [Base.ts:50](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L50)*
+*Defined in [Base.ts:50](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L50)*
 
 ___
 
@@ -1521,7 +1526,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[DDBHandler](#static-ddbhandler)*
 
-*Defined in [DDBBase.ts:64](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L64)*
+*Defined in [DDBBase.ts:64](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L64)*
 
 ___
 
@@ -1531,21 +1536,22 @@ ___
 
 *Inherited from [Base](#classesbasemd).[scheme](#scheme)*
 
-*Defined in [Base.ts:51](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L51)*
+*Defined in [Base.ts:51](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L51)*
 
 ## Methods
 
 ###  addRelationship
 
-▸ **addRelationship**(`valueOrObject`: String | [Base](#classesbasemd)): *Promise‹void›*
+▸ **addRelationship**(`valueOrObject`: String | [Base](#classesbasemd), `prefix`: string): *Promise‹void›*
 
-*Defined in [Lookupable.ts:16](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookupable.ts#L16)*
+*Defined in [Lookupable.ts:16](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookupable.ts#L16)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
 `valueOrObject` | String &#124; [Base](#classesbasemd) |
+`prefix` | string |
 
 **Returns:** *Promise‹void›*
 
@@ -1555,7 +1561,7 @@ ___
 
 ▸ **clearLookups**(): *Promise‹void›*
 
-*Defined in [Lookupable.ts:13](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookupable.ts#L13)*
+*Defined in [Lookupable.ts:13](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookupable.ts#L13)*
 
 **Returns:** *Promise‹void›*
 
@@ -1569,7 +1575,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[delete](#abstract-delete)*
 
-*Defined in [DDBBase.ts:61](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L61)*
+*Defined in [DDBBase.ts:61](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L61)*
 
 **Returns:** *Promise‹void›*
 
@@ -1581,7 +1587,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[exists](#exists)*
 
-*Defined in [Base.ts:17](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L17)*
+*Defined in [Base.ts:17](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L17)*
 
 **Parameters:**
 
@@ -1601,7 +1607,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[get](#abstract-get)*
 
-*Defined in [DDBBase.ts:30](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L30)*
+*Defined in [DDBBase.ts:30](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L30)*
 
 **Type parameters:**
 
@@ -1626,7 +1632,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[getAll](#abstract-getall)*
 
-*Defined in [DDBBase.ts:45](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L45)*
+*Defined in [DDBBase.ts:45](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L45)*
 
 **Returns:** *Promise‹object›*
 
@@ -1638,7 +1644,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getId](#getid)*
 
-*Defined in [Base.ts:29](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L29)*
+*Defined in [Base.ts:29](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L29)*
 
 **Returns:** *string*
 
@@ -1650,7 +1656,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getIdObject](#getidobject)*
 
-*Defined in [Base.ts:32](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L32)*
+*Defined in [Base.ts:32](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L32)*
 
 **Returns:** *object*
 
@@ -1664,7 +1670,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getOptional](#getoptional)*
 
-*Defined in [Base.ts:14](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L14)*
+*Defined in [Base.ts:14](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L14)*
 
 **Type parameters:**
 
@@ -1687,7 +1693,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getUri](#geturi)*
 
-*Defined in [Base.ts:39](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L39)*
+*Defined in [Base.ts:39](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L39)*
 
 **Returns:** *string*
 
@@ -1701,7 +1707,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[init](#init)*
 
-*Defined in [DDBBase.ts:5](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L5)*
+*Defined in [DDBBase.ts:5](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L5)*
 
 **Parameters:**
 
@@ -1723,7 +1729,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[load](#load)*
 
-*Defined in [DDBBase.ts:17](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L17)*
+*Defined in [DDBBase.ts:17](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L17)*
 
 **Returns:** *Promise‹this›*
 
@@ -1735,7 +1741,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[loadFromItem](#loadfromitem)*
 
-*Defined in [DDBBase.ts:24](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L24)*
+*Defined in [DDBBase.ts:24](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L24)*
 
 **Parameters:**
 
@@ -1753,7 +1759,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[mock](#mock)*
 
-*Defined in [Base.ts:36](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L36)*
+*Defined in [Base.ts:36](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L36)*
 
 **Returns:** *object*
 
@@ -1767,7 +1773,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[remove](#remove)*
 
-*Defined in [DDBBase.ts:58](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L58)*
+*Defined in [DDBBase.ts:58](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L58)*
 
 **Parameters:**
 
@@ -1781,15 +1787,33 @@ ___
 
 ###  removeRelationship
 
-▸ **removeRelationship**(`valueOrObject`: String | [Base](#classesbasemd)): *Promise‹void›*
+▸ **removeRelationship**(`valueOrObject`: String | [Base](#classesbasemd), `prefix`: string): *Promise‹void›*
 
-*Defined in [Lookupable.ts:23](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookupable.ts#L23)*
+*Defined in [Lookupable.ts:23](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookupable.ts#L23)*
 
 **Parameters:**
 
 Name | Type |
 ------ | ------ |
 `valueOrObject` | String &#124; [Base](#classesbasemd) |
+`prefix` | string |
+
+**Returns:** *Promise‹void›*
+
+___
+
+###  removeValueRelationship
+
+▸ **removeValueRelationship**(`idOrObject`: String | [Base](#classesbasemd), `prefix`: string): *Promise‹void›*
+
+*Defined in [Lookupable.ts:30](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookupable.ts#L30)*
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`idOrObject` | String &#124; [Base](#classesbasemd) |
+`prefix` | string |
 
 **Returns:** *Promise‹void›*
 
@@ -1801,7 +1825,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[runLater](#runlater)*
 
-*Defined in [Base.ts:52](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L52)*
+*Defined in [Base.ts:52](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L52)*
 
 **Parameters:**
 
@@ -1823,7 +1847,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[set](#abstract-set)*
 
-*Defined in [DDBBase.ts:48](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L48)*
+*Defined in [DDBBase.ts:48](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L48)*
 
 **Parameters:**
 
@@ -1840,7 +1864,7 @@ ___
 
 ▸ **setLookup**(`value`: string, `prefix`: string): *Promise‹void›*
 
-*Defined in [Lookupable.ts:10](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Lookupable.ts#L10)*
+*Defined in [Lookupable.ts:10](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Lookupable.ts#L10)*
 
 **Parameters:**
 
@@ -1859,7 +1883,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[toId](#toid)*
 
-*Defined in [Base.ts:25](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L25)*
+*Defined in [Base.ts:25](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L25)*
 
 **Parameters:**
 
@@ -1879,7 +1903,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[trigger](#trigger)*
 
-*Defined in [Base.ts:44](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L44)*
+*Defined in [Base.ts:44](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L44)*
 
 **Parameters:**
 
@@ -1893,7 +1917,7 @@ Name | Type | Default |
 
 <a name="classesrelationshipmd"></a>
 
-[@raydeck/controller-manager - v1.0.3](#readmemd) › [Relationship](#classesrelationshipmd)
+[@raydeck/controller-manager - v1.0.4](#readmemd) › [Relationship](#classesrelationshipmd)
 
 # Class: Relationship
 
@@ -1947,7 +1971,7 @@ Name | Type | Default |
 
 \+ **new Relationship**(`id?`: undefined | string): *[Relationship](#classesrelationshipmd)*
 
-*Defined in [Relationship.ts:7](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L7)*
+*Defined in [Relationship.ts:7](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L7)*
 
 **Parameters:**
 
@@ -1965,7 +1989,7 @@ Name | Type |
 
 *Inherited from [DDBBase](#classesddbbasemd).[ddb](#ddb)*
 
-*Defined in [DDBBase.ts:4](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L4)*
+*Defined in [DDBBase.ts:4](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L4)*
 
 ___
 
@@ -1975,7 +1999,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[id](#optional-id)*
 
-*Defined in [Base.ts:6](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L6)*
+*Defined in [Base.ts:6](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L6)*
 
 ___
 
@@ -1985,7 +2009,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[scheme](#scheme)*
 
-*Defined in [Base.ts:50](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L50)*
+*Defined in [Base.ts:50](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L50)*
 
 ___
 
@@ -1995,7 +2019,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[DDBHandler](#static-ddbhandler)*
 
-*Defined in [DDBBase.ts:64](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L64)*
+*Defined in [DDBBase.ts:64](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L64)*
 
 ___
 
@@ -2005,7 +2029,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[scheme](#scheme)*
 
-*Defined in [Base.ts:51](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L51)*
+*Defined in [Base.ts:51](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L51)*
 
 ## Methods
 
@@ -2017,7 +2041,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[delete](#abstract-delete)*
 
-*Defined in [DDBBase.ts:61](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L61)*
+*Defined in [DDBBase.ts:61](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L61)*
 
 **Returns:** *Promise‹void›*
 
@@ -2029,7 +2053,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[exists](#exists)*
 
-*Defined in [Base.ts:17](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L17)*
+*Defined in [Base.ts:17](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L17)*
 
 **Parameters:**
 
@@ -2049,7 +2073,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[get](#abstract-get)*
 
-*Defined in [DDBBase.ts:30](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L30)*
+*Defined in [DDBBase.ts:30](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L30)*
 
 **Type parameters:**
 
@@ -2074,7 +2098,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[getAll](#abstract-getall)*
 
-*Defined in [DDBBase.ts:45](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L45)*
+*Defined in [DDBBase.ts:45](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L45)*
 
 **Returns:** *Promise‹object›*
 
@@ -2086,7 +2110,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[getId](#getid)*
 
-*Defined in [Relationship.ts:23](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L23)*
+*Defined in [Relationship.ts:23](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L23)*
 
 **Returns:** *string*
 
@@ -2098,7 +2122,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getIdObject](#getidobject)*
 
-*Defined in [Base.ts:32](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L32)*
+*Defined in [Base.ts:32](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L32)*
 
 **Returns:** *object*
 
@@ -2112,7 +2136,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getOptional](#getoptional)*
 
-*Defined in [Base.ts:14](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L14)*
+*Defined in [Base.ts:14](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L14)*
 
 **Type parameters:**
 
@@ -2135,7 +2159,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[getUri](#geturi)*
 
-*Defined in [Base.ts:39](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L39)*
+*Defined in [Base.ts:39](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L39)*
 
 **Returns:** *string*
 
@@ -2149,7 +2173,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[init](#init)*
 
-*Defined in [DDBBase.ts:5](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L5)*
+*Defined in [DDBBase.ts:5](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L5)*
 
 **Parameters:**
 
@@ -2171,7 +2195,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[load](#load)*
 
-*Defined in [DDBBase.ts:17](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L17)*
+*Defined in [DDBBase.ts:17](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L17)*
 
 **Returns:** *Promise‹this›*
 
@@ -2183,7 +2207,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[loadFromItem](#loadfromitem)*
 
-*Defined in [DDBBase.ts:24](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L24)*
+*Defined in [DDBBase.ts:24](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L24)*
 
 **Parameters:**
 
@@ -2201,7 +2225,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[mock](#mock)*
 
-*Defined in [Base.ts:36](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L36)*
+*Defined in [Base.ts:36](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L36)*
 
 **Returns:** *object*
 
@@ -2215,7 +2239,7 @@ ___
 
 *Inherited from [DDBBase](#classesddbbasemd).[remove](#remove)*
 
-*Defined in [DDBBase.ts:58](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L58)*
+*Defined in [DDBBase.ts:58](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L58)*
 
 **Parameters:**
 
@@ -2233,7 +2257,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[runLater](#runlater)*
 
-*Defined in [Base.ts:52](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L52)*
+*Defined in [Base.ts:52](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L52)*
 
 **Parameters:**
 
@@ -2255,7 +2279,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[set](#abstract-set)*
 
-*Defined in [DDBBase.ts:48](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/DDBBase.ts#L48)*
+*Defined in [DDBBase.ts:48](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/DDBBase.ts#L48)*
 
 **Parameters:**
 
@@ -2274,7 +2298,7 @@ ___
 
 *Overrides [Base](#classesbasemd).[toId](#toid)*
 
-*Defined in [Relationship.ts:16](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Relationship.ts#L16)*
+*Defined in [Relationship.ts:16](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Relationship.ts#L16)*
 
 **Parameters:**
 
@@ -2296,7 +2320,7 @@ ___
 
 *Inherited from [Base](#classesbasemd).[trigger](#trigger)*
 
-*Defined in [Base.ts:44](https://github.com/rhdeck/controller-manager/blob/cc07cc3/src/Base.ts#L44)*
+*Defined in [Base.ts:44](https://github.com/rhdeck/controller-manager/blob/5c880e9/src/Base.ts#L44)*
 
 **Parameters:**
 
