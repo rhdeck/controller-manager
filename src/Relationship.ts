@@ -3,6 +3,7 @@ import { queryPage } from "@raydeck/ddb-manager";
 import { get as registryGet } from "@raydeck/registry-manager";
 import { makeCompoundId, parseCompoundId } from "@raydeck/id-components";
 import { getFromId, Schemable } from "@raydeck/session-manager";
+import { Relationship_clearValue } from ".";
 export default class Relationship extends DDBBase {
   constructor(id?: string) {
     super();
@@ -98,30 +99,44 @@ export async function getIdsObjects<T>(
   const objects = <T[]>objectsOrUndefineds.filter((o) => !!o);
   return [objects, nextKey];
 }
-export async function set(id: string, value: string) {
+export async function set(id: string, value: string, prefix: string = "") {
   const relationship = new Relationship();
-  await relationship.ddb._create({}, relationship.toId({ id, value }));
-  relationship.id = { id, value };
+  await relationship.ddb._create(
+    {},
+    relationship.toId({ id: prefix + id, value })
+  );
+  relationship.id = { id: prefix + id, value };
 }
 
-export async function remove(id: string, value: string) {
-  const relationship = new Relationship(makeCompoundId(id, value));
+export async function remove(id: string, value: string, prefix: string = "") {
+  const relationship = new Relationship(makeCompoundId(prefix + id, value));
   await relationship.delete();
 }
 
-export async function clear(id: string, lastCursor?: string): Promise<void> {
-  const [values, nextCursor] = await getValuesPage(id, lastCursor);
+export async function clear(id: string, prefix: string = "") {
+  return _clear(id, prefix);
+}
+async function _clear(
+  id: string,
+  prefix: string,
+  lastCursor?: string
+): Promise<void> {
+  const [values, nextCursor] = await getValuesPage(prefix + id, lastCursor);
   if (values)
     await Promise.all(
       values.map((value) => {
-        return remove(id, value);
+        return remove(prefix + id, value);
       })
     );
-  if (nextCursor) return clear(id, nextCursor);
+  if (nextCursor) return _clear(id, prefix, nextCursor);
 }
 
-export async function clearValue(
+export async function clearValue(value: string, prefix: string = "") {
+  return _clearValue(value, prefix);
+}
+async function _clearValue(
   value: string,
+  prefix: string,
   lastCursor?: string
 ): Promise<void> {
   const [ids, nextCursor] = await getIdsPage(value, lastCursor);
@@ -131,5 +146,5 @@ export async function clearValue(
         return remove(id, value);
       })
     );
-  if (nextCursor) return clearValue(value, nextCursor);
+  if (nextCursor) return _clearValue(value, prefix, nextCursor);
 }
