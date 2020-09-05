@@ -13,21 +13,23 @@ export default abstract class Lookupable extends DDBBase {
   async clearLookups() {
     console.error("clearLookups does not do anythiing yet");
   }
-  async addRelationship(valueOrObject: String | Base) {
+  async addRelationship(valueOrObject: String | Base, prefix: string) {
     const value =
       typeof valueOrObject === "string"
         ? valueOrObject
         : (<Base>valueOrObject).getId();
-    await Promise.all([setRelationship(this.getId(), value)]);
+    await Promise.all([setRelationship(this.getId(), value, prefix)]);
   }
-  async removeRelationship(valueOrObject: String | Base) {
+  async removeRelationship(valueOrObject: String | Base, prefix: string) {
     const value =
       typeof valueOrObject === "string"
         ? valueOrObject
         : (<Base>valueOrObject).getId();
-    await Promise.all([
-      removeRelationship(this.getId(), value),
-      removeRelationship(value, this.getId()),
-    ]);
+    await removeRelationship(this.getId(), value, prefix);
+  }
+  async removeValueRelationship(idOrObject: String | Base, prefix: string) {
+    const id =
+      typeof idOrObject === "string" ? idOrObject : (<Base>idOrObject).getId();
+    await removeRelationship(id, this.getId(), prefix);
   }
 }

@@ -25,28 +25,34 @@ export default class Relationship extends DDBBase {
     return makeCompoundId(id, value);
   }
 }
-export async function get(id: string, value: string) {
-  return new Relationship(makeCompoundId(id, value)).load();
+export async function get(id: string, value: string, prefix: string) {
+  return new Relationship(makeCompoundId(prefix + id, value)).load();
 }
 export async function getValuesPage(
   id: string,
+  prefix: string,
   lastKey?: string
 ): Promise<[string[], string | undefined]> {
   const [items, cursor] = await queryPage(
-    { TableName: registryGet("relationshipTable"), Key: "id", Value: id },
+    {
+      TableName: registryGet("relationshipTable"),
+      Key: "id",
+      Value: prefix + id,
+    },
     lastKey
   );
-  const ids = (<{ id: string; value: string }[]>items).map(
+  const values = (<{ value: string }[]>items).map(
     ({ value }: { value: string }) => value
   );
-  return [ids, cursor];
+  return [values, cursor];
 }
 export async function getValuesObjects<T>(
   schemeOrClass: Schemable | string,
   id: string,
+  prefix: string,
   lastKey?: string
 ): Promise<[T[], string | undefined]> {
-  const [values, nextKey] = await getValuesPage(id, lastKey);
+  const [values, nextKey] = await getValuesPage(id, prefix, lastKey);
   const objectsOrUndefineds = await Promise.all(
     values.map(async (value) => {
       try {
@@ -61,35 +67,37 @@ export async function getValuesObjects<T>(
   return [objects, nextKey];
 }
 export async function getIdsPage(
-  id: string,
+  value: string,
+  prefix: string,
   lastKey?: string
 ): Promise<[string[], string | undefined]> {
   const [items, cursor] = await queryPage(
     {
       TableName: registryGet("relationshipTable"),
       Key: "value",
-      Value: id,
+      Value: value,
       IndexName: registryGet("relationshipValueIndex"),
     },
     lastKey
   );
-  const ids = (<{ id: string; value: string }[]>items).map(
-    ({ value }: { value: string }) => value
-  );
+  const ids = (<{ id: string; value: string }[]>items)
+    .filter(({ id }) => {
+      id.startsWith(prefix);
+    })
+    .map(({ value }: { value: string }) => value.substring(prefix.length));
   return [ids, cursor];
 }
 export async function getIdsObjects<T>(
   schemeOrClass: Schemable | string,
   value: string,
-  prefix: string = "",
+  prefix: string,
   lastKey?: string
 ): Promise<[T[], string | undefined]> {
-  const [values, nextKey] = await getIdsPage(value, lastKey);
+  const [values, nextKey] = await getIdsPage(value, prefix, lastKey);
   const objectsOrUndefineds = await Promise.all(
     values.map(async (value) => {
       try {
-        const parsedValue = value.substring(prefix.length);
-        const o = await getFromId<T>(schemeOrClass, parsedValue);
+        const o = await getFromId<T>(schemeOrClass, value);
         return o;
       } catch (e) {
         return undefined;
@@ -99,7 +107,7 @@ export async function getIdsObjects<T>(
   const objects = <T[]>objectsOrUndefineds.filter((o) => !!o);
   return [objects, nextKey];
 }
-export async function set(id: string, value: string, prefix: string = "") {
+export async function set(id: string, value: string, prefix: string) {
   const relationship = new Relationship();
   await relationship.ddb._create(
     {},
@@ -108,12 +116,12 @@ export async function set(id: string, value: string, prefix: string = "") {
   relationship.id = { id: prefix + id, value };
 }
 
-export async function remove(id: string, value: string, prefix: string = "") {
+export async function remove(id: string, value: string, prefix: string) {
   const relationship = new Relationship(makeCompoundId(prefix + id, value));
   await relationship.delete();
 }
 
-export async function clear(id: string, prefix: string = "") {
+export async function clear(id: string, prefix: string) {
   return _clear(id, prefix);
 }
 async function _clear(
@@ -121,17 +129,17 @@ async function _clear(
   prefix: string,
   lastCursor?: string
 ): Promise<void> {
-  const [values, nextCursor] = await getValuesPage(prefix + id, lastCursor);
+  const [values, nextCursor] = await getValuesPage(id, prefix, lastCursor);
   if (values)
     await Promise.all(
       values.map((value) => {
-        return remove(prefix + id, value);
+        return remove(id, value, prefix);
       })
     );
   if (nextCursor) return _clear(id, prefix, nextCursor);
 }
 
-export async function clearValue(value: string, prefix: string = "") {
+export async function clearValue(value: string, prefix: string) {
   return _clearValue(value, prefix);
 }
 async function _clearValue(
@@ -139,11 +147,11 @@ async function _clearValue(
   prefix: string,
   lastCursor?: string
 ): Promise<void> {
-  const [ids, nextCursor] = await getIdsPage(value, lastCursor);
+  const [ids, nextCursor] = await getIdsPage(value, prefix, lastCursor);
   if (ids)
     await Promise.all(
       ids.map((id) => {
-        return remove(id, value);
+        return remove(id, value, prefix);
       })
     );
   if (nextCursor) return _clearValue(value, prefix, nextCursor);
