@@ -80,13 +80,15 @@ export async function getIdsPage(
 export async function getIdsObjects<T>(
   schemeOrClass: Schemable | string,
   value: string,
+  prefix: string = "",
   lastKey?: string
 ): Promise<[T[], string | undefined]> {
   const [values, nextKey] = await getIdsPage(value, lastKey);
   const objectsOrUndefineds = await Promise.all(
     values.map(async (value) => {
       try {
-        const o = await getFromId<T>(schemeOrClass, value);
+        const parsedValue = value.substring(prefix.length);
+        const o = await getFromId<T>(schemeOrClass, parsedValue);
         return o;
       } catch (e) {
         return undefined;
