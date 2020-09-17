@@ -9,7 +9,7 @@ export default class Relationship extends DDBBase {
     super();
     this.init({
       id,
-      tableName: registryGet("lookupTable"),
+      tableName: registryGet("relationshipTable"),
       partitionKey: "id",
     });
   }
