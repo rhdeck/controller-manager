@@ -3,7 +3,6 @@ import { queryPage } from "@raydeck/ddb-manager";
 import { get as registryGet } from "@raydeck/registry-manager";
 import { makeCompoundId, parseCompoundId } from "@raydeck/id-components";
 import { getFromId, Schemable } from "@raydeck/session-manager";
-import { Relationship_clearValue } from ".";
 export default class Relationship extends DDBBase {
   constructor(id?: string) {
     super();
@@ -76,7 +75,7 @@ export async function getIdsPage(
       TableName: registryGet("relationshipTable"),
       Key: "value",
       Value: value,
-      IndexName: registryGet("relationshipValueIndex"),
+      IndexName: registryGet("relationshipTableReverseIndex"),
     },
     lastKey
   );
