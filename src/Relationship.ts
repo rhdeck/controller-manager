@@ -70,20 +70,16 @@ export async function getIdsPage(
   prefix: string,
   lastKey?: string
 ): Promise<[string[], string | undefined]> {
-  const [items, cursor] = await queryPage(
-    {
-      TableName: registryGet("relationshipTable"),
-      Key: "value",
-      Value: value,
-      IndexName: registryGet("relationshipTableReverseIndex"),
-    },
-    lastKey
-  );
+  const params = {
+    TableName: registryGet("relationshipTable"),
+    Key: "value",
+    Value: value,
+    IndexName: registryGet("relationshipTableReverseIndex"),
+  };
+  const [items, cursor] = await queryPage(params, lastKey);
   const ids = (<{ id: string; value: string }[]>items)
-    .filter(({ id }) => {
-      id.startsWith(prefix);
-    })
-    .map(({ value }: { value: string }) => value.substring(prefix.length));
+    .filter(({ id }) => id.startsWith(prefix))
+    .map(({ id }: { id: string }) => id.substring(prefix.length));
   return [ids, cursor];
 }
 export async function getIdsObjects<T>(
@@ -93,6 +89,7 @@ export async function getIdsObjects<T>(
   lastKey?: string
 ): Promise<[T[], string | undefined]> {
   const [values, nextKey] = await getIdsPage(value, prefix, lastKey);
+  console.log("I got me some values", values);
   const objectsOrUndefineds = await Promise.all(
     values.map(async (value) => {
       try {
@@ -104,6 +101,7 @@ export async function getIdsObjects<T>(
     })
   );
   const objects = <T[]>objectsOrUndefineds.filter((o) => !!o);
+  console.log("I got me some objects", objects);
   return [objects, nextKey];
 }
 export async function set(id: string, value: string, prefix: string) {
