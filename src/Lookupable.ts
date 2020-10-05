@@ -7,11 +7,11 @@ import {
 } from "./Relationship";
 import Base from "./Base";
 export default abstract class Lookupable extends DDBBase {
-  async setLookup(value: string, prefix: string) {
-    await setObject(prefix + ":" + value, this);
+  async setLookup(value: string, prefix: string, ttl?: Date) {
+    await setObject(prefix + ":" + value, this, ttl);
   }
   async clearLookups() {
-    console.error("clearLookups does not do anythiing yet");
+    console.error("clearLookups does not do anything yet");
   }
   async addRelationship(valueOrObject: String | Base, prefix: string) {
     const value =
