@@ -19,21 +19,26 @@ export async function getObject<T>(id: string) {
   const obj = await getFromUri<T>(uri);
   return obj;
 }
-export async function setObject(id: string, object: Sessionable) {
+export async function setObject(id: string, object: Sessionable, ttl?: Date) {
   const uri = object.getUri();
-  return setUri(id, uri);
+  return setUri(id, uri, ttl);
 }
-export async function setUri(id: string, uri: string) {
+export async function setUri(id: string, uri: string, ttl?: Date) {
   //first look for existing value
   try {
     const testUri = await getUri(id);
     if (uri === testUri) return;
     const lookup = await new Lookup(id).load();
     await lookup.set("uri", uri);
+    if (ttl) {
+      await lookup.set("ttl", Math.floor(ttl.valueOf() / 1000));
+    } else {
+      if (await lookup.exists("ttl")) await lookup.remove("ttl");
+    }
     return;
   } catch (e) {
     //There is no lookup here - let's create
-    await make(id, uri);
+    await make(id, uri, ttl);
   }
 }
 export async function remove(id: string) {
@@ -44,9 +49,10 @@ export async function remove(id: string) {
     //Nothing to do!
   }
 }
-async function make(id: string, uri: string) {
+async function make(id: string, uri: string, ttl?: Date) {
   const lookup = new Lookup();
-  await lookup.ddb._create({ uri }, lookup.toId(id));
+  const ttlSeconds = ttl ? Math.floor(ttl.valueOf() / 1000) : undefined;
+  await lookup.ddb._create({ uri, ttl: ttlSeconds }, lookup.toId(id));
   lookup.id = { id };
 }
 export async function removeObject(object: Sessionable) {
