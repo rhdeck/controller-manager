@@ -10,12 +10,12 @@ export default class Lookup extends DDBBase {
     });
   }
 }
-export async function getUri(id: string) {
-  const lookup = await new Lookup(id).load();
+export async function getUri(id: string, prefix: string = "") {
+  const lookup = await new Lookup(prefix + id).load();
   return await lookup.get<string>("uri");
 }
-export async function getObject<T>(id: string) {
-  const uri = await getUri(id);
+export async function getObject<T>(id: string, prefix: string = "") {
+  const uri = await getUri(prefix + id);
   const obj = await getFromUri<T>(uri);
   return obj;
 }
