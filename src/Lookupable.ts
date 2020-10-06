@@ -8,7 +8,7 @@ import {
 import Base from "./Base";
 export default abstract class Lookupable extends DDBBase {
   async setLookup(value: string, prefix: string, ttl?: Date) {
-    await setObject(prefix + ":" + value, this, ttl);
+    await setObject(prefix + value, this, ttl);
   }
   async clearLookups() {
     console.error("clearLookups does not do anything yet");
