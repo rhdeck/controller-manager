@@ -114,7 +114,14 @@ export async function set(id: string, value: string, prefix: string) {
 }
 
 export async function remove(id: string, value: string, prefix: string) {
-  const relationship = new Relationship(makeCompoundId(prefix + id, value));
+  const compoundId = makeCompoundId(prefix + id, value);
+  let relationship: Relationship | undefined;
+  try {
+    relationship = await new Relationship(compoundId).load();
+  } catch (e) {
+    //No relationship, nothing to remove
+    return;
+  }
   await relationship.delete();
 }
 
