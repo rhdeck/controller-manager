@@ -43,7 +43,8 @@
   },
   "files": [
     "src",
-    "lib"
+    "lib",
+    "serverless"
   ],
   "dependencies": {
     "@raydeck/id-components": "^1.0.3",
