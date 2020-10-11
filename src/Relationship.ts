@@ -89,7 +89,6 @@ export async function getIdsObjects<T>(
   lastKey?: string
 ): Promise<[T[], string | undefined]> {
   const [values, nextKey] = await getIdsPage(value, prefix, lastKey);
-  console.log("I got me some values", values);
   const objectsOrUndefineds = await Promise.all(
     values.map(async (value) => {
       try {
@@ -101,7 +100,6 @@ export async function getIdsObjects<T>(
     })
   );
   const objects = <T[]>objectsOrUndefineds.filter((o) => !!o);
-  console.log("I got me some objects", objects);
   return [objects, nextKey];
 }
 export async function set(id: string, value: string, prefix: string) {
