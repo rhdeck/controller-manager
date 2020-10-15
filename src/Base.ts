@@ -42,7 +42,7 @@ export default abstract class Base implements Sessionable {
     return serialize({ scheme, host: encodeComponent(host) });
   }
   async trigger(eventName: string, data: { [key: string]: any } = {}) {
-    const outData = { ...data, _uri: this.getUri() };
+    const outData = { ...data, _uri: this.getUri(), object: <Base>this };
     const outEventName = this.scheme + "." + eventName;
     console.log("triggering ", outEventName, outData);
     await trigger(outEventName, outData);
