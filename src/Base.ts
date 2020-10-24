@@ -55,9 +55,6 @@ export default abstract class Base implements Sessionable {
   ) {
     console.error("runLater does nothing at the moment");
   }
-  static getFromUri(uri: string) {
-    return undefined;
-  }
   static async addListener<T>(
     event: string,
     handler: (object: T, args: { [key: string]: any }) => Promise<void>
