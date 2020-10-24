@@ -1,7 +1,7 @@
 import { encodeComponent, undefinedIfError } from "@raydeck/id-components";
 import { Sessionable } from "@raydeck/session-manager";
 import { serialize } from "uri-js";
-import { trigger } from "@raydeck/event-manager";
+import { trigger, addListener as _addListener } from "@raydeck/event-manager";
 export default abstract class Base implements Sessionable {
   id?: { [key: string]: any };
   init({ id }: { id?: any }) {
@@ -54,5 +54,21 @@ export default abstract class Base implements Sessionable {
     context?: { [key: string]: any }
   ) {
     console.error("runLater does nothing at the moment");
+  }
+  static getFromUri(uri: string) {
+    return undefined;
+  }
+  static async addListener<T>(
+    event: string,
+    handler: (object: T, args: { [key: string]: any }) => Promise<void>
+  ) {
+    return _addListener(
+      [this.scheme, event].join("."),
+      async ({ object, ...options }) => {
+        if (!object)
+          throw new Error("Object not set in event trigger arguments");
+        if (object) handler(object, options);
+      }
+    );
   }
 }
