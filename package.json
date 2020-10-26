@@ -1,6 +1,6 @@
 {
   "name": "@raydeck/controller-manager",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "",
   "main": "lib/index.js",
   "bin": "lib/bin.js",
