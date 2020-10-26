@@ -2,6 +2,17 @@ import { encodeComponent, undefinedIfError } from "@raydeck/id-components";
 import { Sessionable } from "@raydeck/session-manager";
 import { serialize } from "uri-js";
 import { trigger, addListener as _addListener } from "@raydeck/event-manager";
+// import { make as makeEvent } from "./Event";
+type MakeEvent = (params: {
+  uri: string;
+  event: string;
+  context?: { [key: string]: any };
+  date?: Date;
+}) => Promise<void>;
+let makeEvent: undefined | MakeEvent;
+export function setMakeEvent(f: MakeEvent) {
+  makeEvent = f;
+}
 export default abstract class Base implements Sessionable {
   id?: { [key: string]: any };
   init({ id }: { id?: any }) {
@@ -44,8 +55,18 @@ export default abstract class Base implements Sessionable {
   async trigger(eventName: string, data: { [key: string]: any } = {}) {
     const outData = { ...data, _uri: this.getUri(), object: <Base>this };
     const outEventName = this.scheme + "." + eventName;
+    await this.log(eventName, data);
     await trigger(outEventName, outData);
   }
+  async triggerNoLog(eventName: string, data: { [key: string]: any } = {}) {
+    const outData = { ...data, _uri: this.getUri(), object: <Base>this };
+    const outEventName = this.scheme + "." + eventName;
+    await trigger(outEventName, outData);
+  }
+  async log(event: string, context: { [key: string]: any } = {}) {
+    if (makeEvent) await makeEvent({ uri: this.getUri(), event, context });
+  }
+
   scheme = "";
   static scheme = "";
   async runLater(
@@ -53,19 +74,24 @@ export default abstract class Base implements Sessionable {
     when: Date,
     context?: { [key: string]: any }
   ) {
-    console.error("runLater does nothing at the moment");
+    console.error("runLater does nothing at the moment"); //@TODO add runlater functionality
   }
-  static async addListener<T>(
+  async cancelRunLater(eventName: string) {
+    console.error("cancelRunLater does nothing at this point"); //@TODO add cancelRunLater functionality
+  }
+}
+export function makeAddListener<T extends Base>(scheme: string) {
+  return (
     event: string,
     handler: (object: T, args: { [key: string]: any }) => Promise<void>
-  ) {
+  ) => {
     return _addListener(
-      [this.scheme, event].join("."),
+      [scheme, event].join("."),
       async ({ object, ...options }) => {
         if (!object)
           throw new Error("Object not set in event trigger arguments");
         if (object) handler(object, options);
       }
     );
-  }
+  };
 }

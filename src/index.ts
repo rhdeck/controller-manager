@@ -1,6 +1,10 @@
 /** THIS FILE IS AUTO_GENERATED - MODIFICATIONS MAY NOT BE SAVED */
-import Base from "./Base";
+import Base, {
+  setMakeEvent as Base_setMakeEvent,
+  makeAddListener as Base_makeAddListener,
+} from "./Base";
 import DDBBase from "./DDBBase";
+import Event, { make as Event_make, page as Event_page } from "./Event";
 import Lookup, {
   getUri as Lookup_getUri,
   getObject as Lookup_getObject,
@@ -24,7 +28,12 @@ import Relationship, {
 } from "./Relationship";
 export {
   Base,
+  Base_setMakeEvent,
+  Base_makeAddListener,
   DDBBase,
+  Event,
+  Event_make,
+  Event_page,
   Lookup,
   Lookup_getUri,
   Lookup_getObject,
