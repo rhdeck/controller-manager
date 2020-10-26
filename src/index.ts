@@ -26,6 +26,10 @@ import Relationship, {
   clear as Relationship_clear,
   clearValue as Relationship_clearValue,
 } from "./Relationship";
+import {
+  getAllPages as utils_getAllPages,
+  mapPages as utils_mapPages,
+} from "./utils";
 export {
   Base,
   Base_setMakeEvent,
@@ -53,4 +57,6 @@ export {
   Relationship_remove,
   Relationship_clear,
   Relationship_clearValue,
+  utils_getAllPages,
+  utils_mapPages,
 };
