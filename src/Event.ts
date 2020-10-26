@@ -54,7 +54,7 @@ export async function page(
 ): Promise<[events: Event[], newLastKey: string | undefined]> {
   if (typeof objectOrId !== "string") objectOrId = objectOrId.getUri();
   const [items, newLastKey] = await queryPage(
-    { TableName: registryGet("eventsTable"), Key: "uri", Value: objectOrId },
+    { TableName: registryGet("eventTable"), Key: "uri", Value: objectOrId },
     lastKey
   );
   const events = await Promise.all(
