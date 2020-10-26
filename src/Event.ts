@@ -44,7 +44,7 @@ export async function make(payload: {
     },
     {
       uri: payload.uri,
-      date: payload.date,
+      date: new Date(payload.date).toISOString(),
     }
   );
 }
