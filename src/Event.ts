@@ -9,7 +9,7 @@ export default class Event extends DDBBase {
     super();
     this.init({
       id: { uri, date },
-      tableName: registryGet("eventsTable"),
+      tableName: registryGet("eventTable"),
       partitionKey: "uri",
     });
   }
