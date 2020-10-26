@@ -22,7 +22,7 @@ export async function getAllPages<T>(
 export async function mapPages<T>(
   boundFnc: (...args: any) => Promise<[any[], string | undefined]>,
   args: any[] = [],
-  f: (o: any) => Promise<any>
+  f: (o: any) => Promise<T>
 ): Promise<T[]> {
   let results: any[] = [];
   let lastKey = null;
