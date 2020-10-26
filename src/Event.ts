@@ -37,7 +37,7 @@ export async function make(payload: {
 }) {
   if (!payload.date) payload.date = new Date();
   const t = new Event();
-  t.ddb._create(
+  await t.ddb._create(
     {
       context: payload.context,
       event: payload.event,

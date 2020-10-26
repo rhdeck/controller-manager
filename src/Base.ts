@@ -65,8 +65,11 @@ export default abstract class Base implements Sessionable {
     await trigger(outEventName, outData);
   }
   async log(event: string, context: { [key: string]: any } = {}) {
-    if (makeEvent) await makeEvent({ uri: this.getUri(), event, context });
-    else console.warn("makeEvent not set");
+    console.log("Starting to log", event, this.getUri());
+    if (makeEvent) {
+      console.log("Found a makeevent");
+      await makeEvent({ uri: this.getUri(), event, context });
+    } else console.warn("makeEvent not set");
   }
 
   scheme = "";
