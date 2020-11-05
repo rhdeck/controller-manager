@@ -64,6 +64,7 @@ export default abstract class Base implements Sessionable {
     await trigger(outEventName, outData);
   }
   async log(event: string, context: { [key: string]: any } = {}) {
+    console.log("[base.log]", this.getUri(), event, JSON.stringify(context));
     if (makeEvent) {
       await makeEvent({ uri: this.getUri(), event, context });
     } else console.warn("makeEvent not set");
@@ -92,7 +93,7 @@ export function makeAddListener<T extends Base>(scheme: string) {
       async ({ object, ...options }) => {
         if (!object)
           throw new Error("Object not set in event trigger arguments");
-        if (object) handler(object, options);
+        if (object) await handler(object, options);
       }
     );
   };
