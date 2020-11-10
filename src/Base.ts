@@ -3,7 +3,7 @@ import { Sessionable } from "@raydeck/session-manager";
 import { serialize } from "uri-js";
 import { trigger, addListener as _addListener } from "@raydeck/event-manager";
 // import { make as makeEvent } from "./Event";
-type MakeEvent = (params: {
+export type MakeEvent = (params: {
   uri: string;
   event: string;
   context?: { [key: string]: any };
@@ -12,6 +12,21 @@ type MakeEvent = (params: {
 let makeEvent: undefined | MakeEvent;
 export function setMakeEvent(f: MakeEvent) {
   makeEvent = f;
+}
+export type RunLater = (
+  uri: string,
+  event: string,
+  when: Date,
+  context?: { [key: string]: any }
+) => Promise<void>;
+export type CancelRunLater = (uri: string, event: string) => Promise<void>;
+let runLater: undefined | RunLater;
+let cancelRunLater: undefined | CancelRunLater;
+export function setRunLater(f: RunLater) {
+  runLater = f;
+}
+export function setCancelRunLater(f: CancelRunLater) {
+  cancelRunLater = f;
 }
 export default abstract class Base implements Sessionable {
   id?: { [key: string]: any };
@@ -76,10 +91,12 @@ export default abstract class Base implements Sessionable {
     when: Date,
     context?: { [key: string]: any }
   ) {
-    console.error("runLater does nothing at the moment"); //@TODO add runlater functionality
+    if (runLater) runLater(this.getUri(), eventName, when, context);
+    else console.error("runLater not registered");
   }
   async cancelRunLater(eventName: string) {
-    console.error("cancelRunLater does nothing at this point"); //@TODO add cancelRunLater functionality
+    if (cancelRunLater) cancelRunLater(this.getUri(), eventName);
+    else console.error("cancelRunLater not registered");
   }
 }
 export function makeAddListener<T extends Base>(scheme: string) {
