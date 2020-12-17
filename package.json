@@ -53,7 +53,7 @@
     "@raydeck/id-components": "^1.0.3"
   },
   "peerDependencies": {
-    "@raydeck/ddb-manager": "^3.1.0",
+    "@raydeck/ddb-manager": "^3.4.0",
     "@raydeck/event-manager": "^1.1.0",
     "@raydeck/registry-manager": "^1.1.0",
     "@raydeck/session-manager": "^1.4.0",

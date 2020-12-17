@@ -37,7 +37,7 @@ export default class DDBBase extends Base {
     if (typeof this.mock()[key] !== "undefined") return <T>this.mock()[key];
     if (typeof def === "undefined") {
       throw new Error(
-        `Value for ${key} not found. Assign a value or provide a default`
+        `Value for ${key} not found in ${this.getUri()}. Assign a value or provide a default`
       );
     }
     return def;
