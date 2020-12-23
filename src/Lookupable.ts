@@ -1,5 +1,5 @@
 import DDBBase from "./DDBBase";
-import { setObject, removeObject } from "./Lookup";
+import { setObject, removeObject, remove, getObject, getUri } from "./Lookup";
 import { Sessionable } from "@raydeck/session-manager";
 import {
   set as setRelationship,
@@ -10,7 +10,15 @@ export default abstract class Lookupable extends DDBBase {
   async setLookup(value: string, prefix: string, ttl?: Date) {
     await setObject(prefix + value, this, ttl);
   }
-  async clearLookups() {
+  async removeLookup(value: string, prefix: string) {
+    const uri = await getUri(prefix + value);
+    if (uri === this.getUri()) await remove(prefix + value);
+    else
+      throw new Error(
+        prefix + value + " is not a valid lookup for " + this.getUri()
+      );
+  }
+  async clearLookups(prefix?: string) {
     console.error("clearLookups does not do anything yet");
   }
   async addRelationship(valueOrObject: String | Base, prefix: string) {
