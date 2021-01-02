@@ -32,15 +32,36 @@ export default class DDBBase extends Base {
       return <T>(<unknown>this.getId());
     }
     if (!this.ddb.loaded) throw "DDB object not loaded";
-    const temp = await this.ddb.get(key);
-    if (typeof temp !== "undefined") return <T>temp;
-    if (typeof this.mock()[key] !== "undefined") return <T>this.mock()[key];
-    if (typeof def === "undefined") {
-      throw new Error(
-        `Value for ${key} not found in ${this.getUri()}. Assign a value or provide a default`
-      );
+    if (key.includes(".")) {
+      const [topKey, ...restOfKeys] = key.split(".");
+      try {
+        const container = await this.get<{ [key: string]: any }>(topKey);
+        let tempContainer: any = container;
+        restOfKeys.forEach((key) => {
+          tempContainer = tempContainer[key];
+        });
+        return <T>tempContainer;
+      } catch (e) {
+        if (typeof def === "undefined") {
+          throw new Error(
+            `Value for ${key} not found in ${this.getUri()}. Assign a value or provide a default`
+          );
+        }
+
+        return def;
+      }
+    } else {
+      const temp = await this.ddb.get(key);
+      if (typeof temp !== "undefined") return <T>temp;
+      if (typeof this.mock()[key] !== "undefined") return <T>this.mock()[key];
+      if (typeof def === "undefined") {
+        throw new Error(
+          `Value for ${key} not found in ${this.getUri()}. Assign a value or provide a default`
+        );
+      }
+
+      return def;
     }
-    return def;
   }
   async getAll(): Promise<{ [key: string]: any }> {
     return { ...this.mock(), ...this.ddb.cachedValues };
