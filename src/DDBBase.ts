@@ -76,7 +76,7 @@ export default class DDBBase extends Base {
       return this.ddb.set(key, value);
     }
   }
-  async increment(key: string, byValue: number) {
+  async increment(key: string, byValue: number = 1) {
     await this.ddb.increment(key, byValue);
   }
   async remove(key: string) {
