@@ -1,0 +1,59 @@
+Lookup:
+  Type: "AWS::DynamoDB::Table"
+  Properties:
+    AttributeDefinitions:
+      - AttributeName: id
+        AttributeType: S
+    StreamSpecification:
+      StreamViewType: NEW_AND_OLD_IMAGES
+    KeySchema:
+      - AttributeName: id
+        KeyType: HASH
+    BillingMode: PAY_PER_REQUEST
+    TimeToLiveSpecification:
+      AttributeName: ttl
+      Enabled: true
+Relationship:
+  Type: "AWS::DynamoDB::Table"
+  Properties:
+    AttributeDefinitions:
+      - AttributeName: id
+        AttributeType: S
+      - AttributeName: value
+        AttributeType: S
+    StreamSpecification:
+      StreamViewType: NEW_AND_OLD_IMAGES
+    KeySchema:
+      - AttributeName: id
+        KeyType: HASH
+      - AttributeName: value
+        KeyType: RANGE
+    BillingMode: PAY_PER_REQUEST
+    GlobalSecondaryIndexes:
+      - IndexName: relationshipReverse
+        KeySchema:
+          - AttributeName: value
+            KeyType: HASH
+          - AttributeName: id
+            KeyType: RANGE
+        Projection:
+          ProjectionType: ALL
+    TimeToLiveSpecification:
+      AttributeName: ttl
+      Enabled: true
+Event:
+  Type: "AWS::DynamoDB::Table"
+  Properties:
+    AttributeDefinitions:
+      - AttributeName: uri
+        AttributeType: S
+      - AttributeName: date
+        AttributeType: S
+    StreamSpecification:
+      StreamViewType: NEW_AND_OLD_IMAGES
+    KeySchema:
+      - AttributeName: uri
+        KeyType: HASH
+      - AttributeName: date
+        KeyType: RANGE
+    BillingMode: PAY_PER_REQUEST
