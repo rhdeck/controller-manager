@@ -91,11 +91,11 @@ export default abstract class Base implements Sessionable {
     when: Date,
     context?: { [key: string]: any }
   ) {
-    if (runLater) runLater(this.getUri(), eventName, when, context);
+    if (runLater) await runLater(this.getUri(), eventName, when, context);
     else console.error("runLater not registered");
   }
   async cancelRunLater(eventName: string) {
-    if (cancelRunLater) cancelRunLater(this.getUri(), eventName);
+    if (cancelRunLater) await cancelRunLater(this.getUri(), eventName);
     else console.error("cancelRunLater not registered");
   }
 }
