@@ -66,6 +66,14 @@ export default class DDBBase extends Base {
   async getAll(): Promise<{ [key: string]: any }> {
     return { ...this.mock(), ...this.ddb.cachedValues };
   }
+  getSync<T>(key: string, def?: T): T {
+    if (typeof this.ddb.cachedValues[key] !== undefined)
+      return this.ddb.cachedValues[key];
+    if (typeof def !== undefined && def) return def;
+    throw new Error(
+      `Value for ${key} not found in ${this.getUri()}. Assign a value or provide a default`
+    );
+  }
   async set(key: string | object, value?: any) {
     if (typeof value === "undefined" && typeof key !== "object") {
       return this.remove(key);
