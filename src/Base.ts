@@ -33,10 +33,12 @@ export default abstract class Base implements Sessionable {
   init({ id }: { id?: any }) {
     if (id) this.id = this.toId(id);
   }
-  abstract async get<T>(key: string, def?: T): Promise<T>;
-  abstract async getAll(): Promise<{ [key: string]: any }>;
-  abstract async set(key: string, value: any): Promise<void>;
-  abstract async delete(): Promise<void>;
+  abstract get<T>(key: string, def?: T): Promise<T>;
+  abstract getAll<
+    T extends { [key: string]: any } = { [key: string]: any }
+  >(): Promise<T>;
+  abstract set(key: string, value: any): Promise<void>;
+  abstract delete(): Promise<void>;
   async getOptional<T>(key: string, def?: T): Promise<T | undefined> {
     return await undefinedIfError<T>(async () => this.get<T>(key, def));
   }

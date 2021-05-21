@@ -63,8 +63,10 @@ export default class DDBBase extends Base {
       return def;
     }
   }
-  async getAll(): Promise<{ [key: string]: any }> {
-    return { ...this.mock(), ...this.ddb.cachedValues };
+  async getAll<
+    T extends { [key: string]: any } = { [key: string]: any }
+  >(): Promise<T> {
+    return { ...this.mock(), ...this.ddb.cachedValues } as T;
   }
   getSync<T>(key: string, def?: T): T {
     if (typeof this.ddb.cachedValues[key] !== undefined)
